@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
+import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 import { costProfiles } from "@/data/catalogue";
@@ -53,7 +54,7 @@ export default function CostSavingCalculatorSection() {
               The catalogue positions The Good Cup and the broader ecosystem around
               fewer accessories, smaller storage needs, and cleaner operational flow.
             </p>
-            <div className="rounded-[1.75rem] border border-border bg-white/70 p-5">
+            <GlassCard className="p-5">
               <p className="mb-2 text-xs uppercase tracking-[0.18em] text-text/45">
                 Estimated Efficiency Gain
               </p>
@@ -69,11 +70,11 @@ export default function CostSavingCalculatorSection() {
                 Modeled around {activeOption.drinks.toLowerCase()} and the
                 catalogue&apos;s claims on storage, lid removal, and straw reduction.
               </p>
-            </div>
+            </GlassCard>
           </ScrollReveal>
 
           <ScrollReveal delay={0.08} className="space-y-8">
-            <div className="rounded-[2rem] border border-border bg-white/72 p-6 shadow-warm">
+            <GlassCard className="p-6">
               <div className="mb-6 flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-text/45">
@@ -99,7 +100,7 @@ export default function CostSavingCalculatorSection() {
                   <span key={option.name}>{option.name}</span>
                 ))}
               </div>
-            </div>
+            </GlassCard>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {costProfiles.map((option, index) => {
@@ -112,10 +113,10 @@ export default function CostSavingCalculatorSection() {
                     type="button"
                     onClick={() => setActiveIndex(index)}
                     className={cn(
-                      "rounded-[1.75rem] border p-5 text-left transition duration-300",
+                      "rounded-[1.25rem] border p-5 text-left backdrop-blur-[20px] transition duration-300 hover:scale-[1.02] hover:shadow-[0_16px_50px_rgba(0,0,0,0.28)]",
                       isActive
-                        ? "border-accent bg-white shadow-warm"
-                        : "border-border bg-white/60 hover:bg-white/80",
+                        ? "border-white/20 bg-white/16 shadow-[0_8px_40px_rgba(0,0,0,0.25)]"
+                        : "border-white/15 bg-white/10",
                     )}
                     data-cursor="expand"
                   >
@@ -140,7 +141,7 @@ export default function CostSavingCalculatorSection() {
               })}
             </div>
 
-            <Button href="#contact">Request a custom cost review</Button>
+            <Button variant="glass" href="#contact">Request a custom cost review</Button>
           </ScrollReveal>
         </div>
       </div>

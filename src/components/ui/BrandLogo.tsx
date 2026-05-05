@@ -3,12 +3,14 @@ import { cn } from "@/lib/utils";
 
 type BrandLogoProps = {
   className?: string;
+  imageClassName?: string;
   markOnly?: boolean;
   priority?: boolean;
 };
 
 export default function BrandLogo({
   className,
+  imageClassName,
   markOnly = false,
   priority,
 }: BrandLogoProps) {
@@ -17,13 +19,13 @@ export default function BrandLogo({
     : "/brand/logo-primary-mark.png";
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative block h-full w-full", className)}>
       <Image
         src={src}
         alt={markOnly ? "Imprimere Pack brand mark" : "Imprimere Pack logo"}
         fill
         priority={priority}
-        className="object-contain"
+        className={cn("object-contain", imageClassName)}
         sizes={markOnly ? "72px" : "240px"}
       />
     </div>

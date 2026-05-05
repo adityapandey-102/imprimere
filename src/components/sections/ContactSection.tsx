@@ -36,7 +36,7 @@ function FloatingField({
   onChange: (field: keyof FormState, value: string) => void;
 }) {
   const baseClassName =
-    "peer w-full rounded-[1.5rem] border bg-white/80 px-5 pb-4 pt-7 text-sm outline-none transition duration-300 placeholder:text-transparent";
+    "peer w-full rounded-[1rem] border bg-white px-5 pb-4 pt-7 text-sm outline-none transition duration-300 placeholder:text-transparent";
 
   return (
     <div className="relative">
@@ -145,7 +145,7 @@ export default function ContactSection() {
               brief and we can discuss supply, sustainability, branding, and
               logistics in one conversation.
             </p>
-            <div className="rounded-[1.75rem] border border-border bg-white/72 p-5">
+            <div className="rounded-[1rem] border border-border/80 bg-white p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-text/45">
                 Best For
               </p>

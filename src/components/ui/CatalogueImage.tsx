@@ -8,6 +8,7 @@ type CatalogueImageProps = {
   className?: string;
   imageClassName?: string;
   sizes?: string;
+  transparent?: boolean;
 };
 
 export default function CatalogueImage({
@@ -16,6 +17,7 @@ export default function CatalogueImage({
   className,
   imageClassName,
   sizes = "(min-width: 1024px) 40vw, 100vw",
+  transparent = false,
 }: CatalogueImageProps) {
   if (!src) {
     return <ImagePlaceholder className={className} label={alt} />;
@@ -24,7 +26,9 @@ export default function CatalogueImage({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-[1.5rem] border border-border/80 bg-white shadow-warm",
+        transparent
+          ? "group relative overflow-visible"
+          : "group relative overflow-hidden rounded-[1.5rem] border border-border/80 bg-white shadow-warm",
         className,
       )}
     >
@@ -34,7 +38,9 @@ export default function CatalogueImage({
         fill
         sizes={sizes}
         className={cn(
-          "object-cover transition-transform duration-500 group-hover:scale-[1.02]",
+          transparent
+            ? "object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+            : "object-cover transition-transform duration-500 group-hover:scale-[1.02]",
           imageClassName,
         )}
       />

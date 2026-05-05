@@ -1,4 +1,5 @@
 import CatalogueImage from "@/components/ui/CatalogueImage";
+import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { coldCupSpecs, goodCupBenefits, hotCupSpecs } from "@/data/catalogue";
 
@@ -12,7 +13,7 @@ function SpecTable({
   specs: Array<{ size: string; packing: string; coating: string; cbm: string }>;
 }) {
   return (
-    <div className="border border-border/80 bg-white/54 p-6 shadow-warm">
+    <GlassCard className="p-6">
       <div className="mb-5">
         <p className="text-[0.68rem] uppercase tracking-[0.24em] text-text/45">
           {title}
@@ -41,7 +42,7 @@ function SpecTable({
           </tbody>
         </table>
       </div>
-    </div>
+    </GlassCard>
   );
 }
 
@@ -74,10 +75,8 @@ export default function GoodCupSection() {
 
         <div className="grid gap-5 lg:grid-cols-4">
           {goodCupBenefits.map((benefit) => (
-            <ScrollReveal
-              key={benefit.title}
-              className="border border-border/80 bg-white/54 p-6 shadow-warm"
-            >
+            <ScrollReveal key={benefit.title}>
+              <GlassCard className="p-6" hover>
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-text/45">
                 Benefit
               </p>
@@ -85,6 +84,7 @@ export default function GoodCupSection() {
               <p className="mt-3 text-sm leading-7 text-text/70">
                 {benefit.description}
               </p>
+              </GlassCard>
             </ScrollReveal>
           ))}
         </div>

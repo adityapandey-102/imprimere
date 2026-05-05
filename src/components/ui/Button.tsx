@@ -6,7 +6,7 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   href?: string;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "glass";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function Button({
@@ -22,7 +22,9 @@ export default function Button({
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30",
     variant === "primary"
       ? "bg-accent text-bg hover:-translate-y-0.5 hover:bg-text/90"
-      : "border border-border bg-transparent text-text hover:-translate-y-0.5 hover:bg-text/4",
+      : variant === "glass"
+        ? "border border-white/15 bg-white/10 text-text backdrop-blur-[20px] hover:-translate-y-0.5 hover:bg-white/18"
+        : "border border-border bg-transparent text-text hover:-translate-y-0.5 hover:bg-text/4",
     className,
   );
 

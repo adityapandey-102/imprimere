@@ -1,4 +1,5 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import GlassCard from "@/components/ui/GlassCard";
 import { services } from "@/data/catalogue";
 
 export default function SupplyServicesSection() {
@@ -14,10 +15,8 @@ export default function SupplyServicesSection() {
 
         <div className="grid gap-6 lg:grid-cols-3">
           {services.map((service) => (
-            <ScrollReveal
-              key={service.title}
-              className="border border-border/80 bg-white/54 p-6 shadow-warm"
-            >
+            <ScrollReveal key={service.title}>
+              <GlassCard className="p-6" hover>
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-text/45">
                 Service
               </p>
@@ -25,6 +24,7 @@ export default function SupplyServicesSection() {
               <p className="mt-4 text-sm leading-7 text-text/70">
                 {service.description}
               </p>
+              </GlassCard>
             </ScrollReveal>
           ))}
         </div>

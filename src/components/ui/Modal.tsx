@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import GlassCard from "@/components/ui/GlassCard";
 
 type ModalProps = {
   children: ReactNode;
@@ -50,7 +51,7 @@ export default function Modal({ children, open, onClose, title }: ModalProps) {
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-text/45 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-text/35 p-4 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -58,22 +59,26 @@ export default function Modal({ children, open, onClose, title }: ModalProps) {
           onClick={onClose}
         >
           <motion.div
-            className="soft-panel relative w-full max-w-3xl overflow-hidden p-6 sm:p-8"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
-            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: "easeOut" }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
+            animate={
+              prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
+            }
+            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.28, ease: "easeOut" }}
             onClick={(event) => event.stopPropagation()}
           >
+            <GlassCard className="relative w-full max-w-3xl p-6 sm:p-8" dark>
             <div className="mb-6 flex items-start justify-between gap-4">
               <div>
-                <p className="eyebrow mb-3 bg-white/85">Preview Modal</p>
-                <h3 className="font-serif text-3xl text-balance">{title}</h3>
+                <p className="eyebrow mb-3 border-white/12 bg-white/10 text-white/72">
+                  Preview Modal
+                </p>
+                <h3 className="font-serif text-3xl text-balance text-white">{title}</h3>
               </div>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full border border-border bg-white/80 p-3 transition hover:scale-105"
+                className="rounded-full border border-white/15 bg-white/10 p-3 text-white transition hover:scale-105 hover:bg-white/18"
                 aria-label="Close modal"
                 data-cursor="expand"
               >
@@ -81,6 +86,7 @@ export default function Modal({ children, open, onClose, title }: ModalProps) {
               </button>
             </div>
             {children}
+            </GlassCard>
           </motion.div>
         </motion.div>
       ) : null}

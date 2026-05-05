@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import BrandLogo from "@/components/ui/BrandLogo";
 import CatalogueImage from "@/components/ui/CatalogueImage";
+import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { customizationFeatures } from "@/data/catalogue";
 
@@ -34,7 +35,7 @@ export default function CustomBrandingSection() {
               className="min-h-[220px]"
               imageClassName="object-contain bg-white p-4"
             />
-            <div className="border border-border/80 bg-white/60 p-6 shadow-warm">
+            <GlassCard className="p-6" hover>
               <div className="relative mb-5 h-12 w-12">
                 <BrandLogo markOnly />
               </div>
@@ -46,16 +47,16 @@ export default function CustomBrandingSection() {
                 Reduced MOQs across multiple product families make premium
                 execution easier to pilot and easier to scale.
               </p>
-            </div>
-            <div className="border border-border/80 bg-alt-1/65 p-6 shadow-warm sm:col-span-2">
+            </GlassCard>
+            <GlassCard className="p-6 sm:col-span-2" dark>
               <p className="text-[0.68rem] uppercase tracking-[0.24em] text-text/45">
                 Branding Capability
               </p>
-              <p className="mt-3 font-serif text-4xl text-balance">
+              <p className="mt-3 font-serif text-4xl text-balance text-white">
                 Multi-colour print, logo continuity, and tactile finish details
                 across the ecosystem.
               </p>
-            </div>
+            </GlassCard>
           </ScrollReveal>
         </div>
       </div>

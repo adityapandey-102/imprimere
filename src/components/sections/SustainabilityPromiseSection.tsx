@@ -1,4 +1,5 @@
 import CatalogueImage from "@/components/ui/CatalogueImage";
+import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { sustainabilityPillars } from "@/data/catalogue";
 
@@ -27,10 +28,8 @@ export default function SustainabilityPromiseSection() {
 
           <div className="grid gap-5 sm:grid-cols-2">
             {sustainabilityPillars.map((pillar) => (
-              <ScrollReveal
-                key={pillar.title}
-                className="rounded-[2rem] border border-border bg-white/72 p-6 shadow-warm"
-              >
+              <ScrollReveal key={pillar.title}>
+                <GlassCard className="p-6" hover>
                 <p className="text-xs uppercase tracking-[0.18em] text-text/45">
                   Pillar
                 </p>
@@ -38,6 +37,7 @@ export default function SustainabilityPromiseSection() {
                 <p className="mt-4 text-sm leading-7 text-text/70">
                   {pillar.description}
                 </p>
+                </GlassCard>
               </ScrollReveal>
             ))}
           </div>
